@@ -2,7 +2,7 @@
     Calendar API
 </p>
 <p>
-    I'm using a laravel framework for my calendar.
+    This project is using a laravel framework for my calendar.
 </p>
 <p>
     Commands to setup this project:
@@ -13,7 +13,7 @@
     </ul>
 </p>
 <p>
-    I'm using a single-responsibility principle pattern in this project.
+    This project is using a single-responsibility principle pattern in this project.
 </p>
 <p>
     This project has also basic PHP Unit Testing.
