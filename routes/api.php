@@ -20,56 +20,20 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 // global prefix version
 $version = 'v1';
 
-// 
 Route::group([
-    'middleware'    => ['json.response'],
     'prefix'        => $version,
     'namespace'     => 'Api',
 ], function () {
-
-    // Authentication Module
+    // Event Module
 	Route::group([
-		'namespace' => 'Auth',
+		'namespace' => 'Event',
 	], function(){
 		Route::group([
-			'prefix' => 'auth',
+			'prefix' => 'event',
 		], function(){
-            Route::post('forgot-password', 'ForgotPasswordController');
-            Route::post('reset-password', 'ResetPasswordForgotPasswordController');
-            Route::post('login', 'LoginController');
-            Route::post('logout', 'LogoutController');
+            Route::get('get-by-year-month', 'GetByYearMonthController');
+            Route::post('add-multiple', 'AddMultipleEventController');
 		});
-		Route::resource('auth', 'AuthController');
-	});
-	
-	// User Module
-	Route::group([
-		'middleware' => [
-			'auth:api',
-		],
-		'namespace' => 'User',
-	], function(){
-		Route::group([
-			'prefix' => 'user',
-		], function(){
-            Route::patch('reset-password/{user}', 'ResetPasswordToDefaultController');
-            Route::patch('change-password/{user}', 'ChangePasswordController');
-		});
-		Route::resource('user', 'UserController');
-	});
-	
-	// Role Module
-	Route::group([
-		'middleware' => [
-			'auth:api',
-		],
-		'namespace' => 'Role',
-	], function(){
-		Route::group([
-			'prefix' => 'role',
-		], function(){
-
-        });
-		Route::resource('role', 'RoleController');
+		Route::resource('event', 'EventController');
 	});
 });
